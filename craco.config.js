@@ -37,6 +37,12 @@ module.exports = {
    *    env YAML_CONFIG=/absolute/path/to/config.yml yarn start
    */
   webpack: {
+    alias: {
+      react: path.resolve(__dirname, './node_modules/react'),
+      'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+      'react-intl': path.resolve(__dirname, './node_modules/react-intl'),
+      'react-map-gl': path.resolve(__dirname, './node_modules/react-map-gl')
+    },
     // eslint-disable-next-line complexity
     configure: function (webpackConfig, { env, paths }) {
       // First, check for env variables passed in the "old" way, and
