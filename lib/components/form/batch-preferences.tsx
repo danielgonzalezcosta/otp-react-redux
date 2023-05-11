@@ -72,6 +72,7 @@ class BatchPreferences extends Component<Props> {
             queryParams={query}
             supportedCompanies={config.companies}
             supportedModes={getSupportedModes(config, intl)}
+            useMetricUnits={config.localization.useMetricUnits}
           />
           {/*
             FIXME: use these instead? They're currently cut off by the short

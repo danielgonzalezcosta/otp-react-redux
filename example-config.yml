@@ -526,6 +526,7 @@ itinerary:
 #  # and in the user-selected locale) if no fare or currency info is available.
 #  currency: 'USD'
 #  defaultLocale: 'en-US'
+#  useMetricUnits: false
 
 ### If using OTP Middleware, you can define the optional phone number options below.
 # phoneFormatOptions:
