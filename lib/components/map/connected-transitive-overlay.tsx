@@ -5,6 +5,7 @@ import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 import { getActiveLeg, getTransitiveData } from '../../util/state'
 
 type Props = {
+  disableFlexArc: boolean
   intl?: IntlShape
   labeledModes?: string[]
   styles?: {
@@ -17,6 +18,8 @@ type Props = {
 const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
   const { labeledModes, styles } = state.otp.config.map.transitive || {}
   const { viewedRoute } = state.otp.ui
+  const disableFlexArc =
+    state.otp.config.map.transitive?.disableFlexArc === true
 
   // If the route viewer is active, do not show itinerary on map.
   // mainPanelContent is null whenever the trip planner is active.
@@ -29,6 +32,7 @@ const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
 
   return {
     activeLeg: getActiveLeg(state),
+    disableFlexArc,
     labeledModes,
     styles,
     // @ts-expect-error typescript is confused by the complex redux reducer. Both params are needed
