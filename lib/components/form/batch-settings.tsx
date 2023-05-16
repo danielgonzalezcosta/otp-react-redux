@@ -102,8 +102,10 @@ class BatchSettings extends Component<Props, State> {
     const disabledModes = possibleModes.filter((m) => !newModes.includes(m))
     // Only include a combination if it every required mode is enabled.
     const newCombinations = possibleCombinations
-      .filter(combinationFilter(newModes))
-      .map(replaceTransitMode(currentQuery.mode))
+      ? possibleCombinations
+          .filter(combinationFilter(newModes))
+          .map(replaceTransitMode(currentQuery.mode))
+      : null
 
     setQueryParam({
       combinations: newCombinations,
