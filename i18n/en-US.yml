@@ -309,6 +309,7 @@ components:
     stations: Transit Stations
     stops: Transit Stops
     streets: Streets
+    the-line: The Line
   MapillaryFrame:
     title: Imagery of the street
   MetroUI:

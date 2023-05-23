@@ -55,6 +55,7 @@
     "@opentripplanner/route-viewer-overlay": "^2.0.9",
     "@opentripplanner/stop-viewer-overlay": "^2.0.4",
     "@opentripplanner/stops-overlay": "^5.0.7",
+    "@opentripplanner/the-line-overlay": "file:../otp-ui/packages/the-line-overlay",
     "@opentripplanner/transit-vehicle-overlay": "^4.0.2",
     "@opentripplanner/transitive-overlay": "^3.0.11",
     "@opentripplanner/trip-details": "^4.0.0",

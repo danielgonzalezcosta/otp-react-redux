@@ -29,6 +29,7 @@ import RoutePreviewOverlay from './route-preview-overlay'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
 import StopsOverlay from './connected-stops-overlay'
 import StopViewerOverlay from './connected-stop-viewer-overlay'
+import TheLineOverlay from './connected-the-line-overlay'
 import TransitiveOverlay from './connected-transitive-overlay'
 import TransitVehicleOverlay from './connected-transit-vehicle-overlay'
 import TripViewerOverlay from './connected-trip-viewer-overlay'
@@ -110,6 +111,8 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.stops' })
     case 'stations':
       return intl.formatMessage({ id: 'components.MapLayers.stations' })
+    case 'the-line':
+      return intl.formatMessage({ id: 'components.MapLayers.the-line' })
     case 'rentalVehicles':
       if (overlay.network)
         return getCompanyNames([overlay.network], config, intl)
@@ -361,6 +364,16 @@ class DefaultMap extends Component {
                     {...namedLayerProps}
                     refreshVehicles={bikeRentalQuery}
                     stations={bikeStations}
+                  />
+                )
+              case 'the-line':
+                return (
+                  <TheLineOverlay
+                    key={k}
+                    {...namedLayerProps}
+                    setLocation
+                    setViewedStop
+                    tilesBaseUrl={vectorTilesEndpoint}
                   />
                 )
               case 'otp2':
