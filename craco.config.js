@@ -41,7 +41,11 @@ module.exports = {
       react: path.resolve(__dirname, './node_modules/react'),
       'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
       'react-intl': path.resolve(__dirname, './node_modules/react-intl'),
-      'react-map-gl': path.resolve(__dirname, './node_modules/react-map-gl')
+      'react-map-gl': path.resolve(__dirname, './node_modules/react-map-gl'),
+      'styled-components': path.resolve(
+        __dirname,
+        './node_modules/styled-components'
+      )
     },
     // eslint-disable-next-line complexity
     configure: function (webpackConfig, { env, paths }) {
