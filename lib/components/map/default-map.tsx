@@ -316,8 +316,10 @@ class DefaultMap extends Component {
             const namedLayerProps = {
               ...overlayConfig,
               id: k,
+              itinerary: itinerary,
               key: k,
-              name: getLayerName(overlayConfig, config, intl)
+              name: getLayerName(overlayConfig, config, intl),
+              pending: pending
             }
             switch (overlayConfig.type) {
               case 'bike-rental':
