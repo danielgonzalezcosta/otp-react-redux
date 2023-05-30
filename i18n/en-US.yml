@@ -336,13 +336,13 @@ components:
     numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
     searching: Finding your options...
     selectArrivalTime: Arrival time
-    selectBest: Best option
+    selectBest: Fastest Route
     selectCost: Cost
     selectDepartureTime: Departure time
     selectDuration: Duration
-    selectWalkTime: Walk time
+    selectWalkTime: "Walk time"
     sortBy: Sort By
-    viewAll: View all options
+    viewAll: View all routes
   NavLoginButton:
     help: Help
     myAccount: My account
@@ -721,10 +721,10 @@ config:
     bicycle_rent: Bikeshare
   flex:
     both: See bottom of itinerary for details
-    call-ahead: Call to reserve
+    call-ahead: " "
     continuous-dropoff: Communicate with operator about stop
-    flex-service: Flex Service
-    flex-service-colon: "Flex Service:"
+    flex-service: " "
+    flex-service-colon: " "
   micromobilityModes:
     micromobility: Own E-scooter
     micromobility_rent: Rented E-scooter

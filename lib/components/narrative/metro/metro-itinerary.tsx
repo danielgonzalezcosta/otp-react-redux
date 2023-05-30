@@ -82,16 +82,16 @@ const ItineraryDetails = styled.ul`
   width: 90%;
 `
 const PrimaryInfo = styled.li`
-  color: #000000cc;
+  color: #fff;
   font-size: 22px;
   font-weight: 600;
   text-align: right;
 `
 
 const SecondaryInfo = styled.li`
-  color: #090909cc;
+  color: #fff;
   font-size: 12px;
-  opacity: 0.7;
+  opacity: 1;
   text-align: right;
 `
 
@@ -137,7 +137,7 @@ const ItineraryGrid = styled.div`
 
   svg {
     /* Fix for safari, where svg needs explicit width to render */
-    width: 28px;
+    width: 40px;
     /* Fix for our svg icons, which tend to be slightly off-center */
     &:not(.no-centering-fix) {
       margin-left: 0px;
@@ -367,12 +367,12 @@ class MetroItinerary extends NarrativeItinerary {
                   LegIcon={LegIcon}
                   showLegDurations={showLegDurations}
                 />
-                <ItineraryDetails
+                <ItineraryDetails className="itin-details"
                   aria-label={intl.formatMessage({
                     id: 'components.ItinerarySummary.itineraryDetails'
                   })}
                 >
-                  <PrimaryInfo>
+                  <PrimaryInfo className="itin-duration">
                     <FormattedDuration
                       duration={itinerary.duration}
                       includeSeconds={false}
@@ -396,36 +396,9 @@ class MetroItinerary extends NarrativeItinerary {
                       )
                     )}
                   </SecondaryInfo>
-                  <SecondaryInfo>
-                    {transitFare === null || transitFare < 0 ? (
-                      <FormattedMessage id="otpUi.TripDetails.transitFareUnknown" />
-                    ) : (
-                      // TODO: re-implement TNC fares for metro UI?
-                      <FormattedNumber
-                        currency={fareCurrency}
-                        currencyDisplay="narrowSymbol"
-                        // This isn't a "real" style prop
-                        // eslint-disable-next-line react/style-prop-object
-                        style="currency"
-                        value={transitFare / 100}
-                      />
-                    )}
-                  </SecondaryInfo>
-                  <SecondaryInfo>
-                    <FormattedMessage
-                      id="components.MetroUI.timeWalking"
-                      values={{
-                        time: (
-                          <FormattedDuration
-                            duration={itinerary.walkTime}
-                            includeSeconds={false}
-                          />
-                        )
-                      }}
-                    />
-                  </SecondaryInfo>
+        
                 </ItineraryDetails>
-                <DepartureTimes>
+                <DepartureTimes className="itin-departures">
                   {arrivesAt ? (
                     <FormattedMessage id="components.MetroUI.arriveAt" />
                   ) : (

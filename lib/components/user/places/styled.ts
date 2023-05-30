@@ -49,6 +49,7 @@ export const StyledFavoritePlace = styled(Place).attrs({
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+    color:#fff;
   }
   ${IconWrapper} {
     color: ${GRAY_ON_WHITE};

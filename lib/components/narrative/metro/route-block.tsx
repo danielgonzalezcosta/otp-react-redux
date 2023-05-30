@@ -83,8 +83,8 @@ const MultiWrapper = styled.span<{ italic?: boolean; multi?: boolean }>`
 `
 
 const LegIconWrapper = styled.span`
-  height: 28px;
-  max-width: 28px;
+  height: 40px;
+  max-width: 40px;
 `
 
 const MultiRouteLongName = styled.div`
@@ -148,7 +148,7 @@ const RouteBlock = ({
       <Wrapper className="route-block-wrapper">
         {leg.mode !== previousLegMode && (
           <LegIconWrapper>
-            <LegIcon height={28} leg={leg} />
+            <LegIcon height={40} leg={leg} />
           </LegIconWrapper>
         )}
         {(leg.routeShortName || leg.route || leg.routeLongName) && (

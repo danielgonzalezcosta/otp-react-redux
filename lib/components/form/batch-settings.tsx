@@ -181,6 +181,7 @@ class BatchSettings extends Component<Props, State> {
             })}
             expanded={expanded === 'SETTINGS'}
             onClick={this._toggleSettings}
+            className='btn-settings'
           >
             {coreUtils.query.isNotDefaultQuery(currentQuery, config) && (
               <Dot className="dot" />
@@ -201,6 +202,7 @@ class BatchSettings extends Component<Props, State> {
             aria-label="Date/Time settings"
             expanded={expanded === 'DATE_TIME'}
             onClick={this._toggleDateTime}
+            className='btn-date-time'
           >
             <StyledDateTimePreview hideButton />
           </StyledDateTimePreviewContainer>

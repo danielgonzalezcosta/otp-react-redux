@@ -52,17 +52,12 @@ const ModeButton = ({
         aria-label={label || getFormattedMode(mode, intl)}
         aria-pressed={selected}
         className={className}
+        id='button-premium'
         onClick={() => onClick(mode)}
       >
-        {icon ? (
-          <StyledIconWrapper style={{ fontSize: '24px' }}>
-            <SvgIcon iconName={icon} style={{ marginBottom: '4px' }} />
-          </StyledIconWrapper>
-        ) : (
-          <ModeIcon height={25} mode={mode} />
-        )}
+        <h4>Premium</h4>
         {selected && (
-          <CheckMarkIcon>
+          <CheckMarkIcon className='premium-selected'>
             <Check />
           </CheckMarkIcon>
         )}

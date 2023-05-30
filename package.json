@@ -19,7 +19,7 @@
     "start": "craco start",
     "percy-serve": "serve",
     "percy-har-express": "har-express",
-    "link-global": "grep --only-matching -E -- '@opentripplanner/[a-z0-9-]+' package.json | sort -u | xargs --max-lines=1 -- yarn link"
+    "link-global": "grep --only-matching -E -- '@opentripplanner/[a-z0-9-]+' package.json | sort -u | xargs -L1 -- yarn link"
   },
   "standard": {
     "parser": "babel-eslint"
