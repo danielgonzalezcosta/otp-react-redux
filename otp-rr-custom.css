@@ -42,12 +42,15 @@
   box-shadow: 3px 0px 12px #00000052;
   z-index: 1000;
   width: 18%;
+  min-width: 400px;
   position: absolute;
   background: #000;
   border-radius: 10px;
   top: 10vh;
   left: 100px;
   padding-bottom: 30px;
+  padding-top: 90px;
+  margin-top: -20px;
 }
 
 
@@ -55,6 +58,7 @@
   position: absolute;
   background: black;
   width: 18%;
+  min-width: 350px;
   height: 80px;
   z-index: 99999;
   top: 80px;
