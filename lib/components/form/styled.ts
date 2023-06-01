@@ -220,6 +220,7 @@ export const StyledLocationField = styled(LocationField)`
 
   ${Input} {
     padding: 6px 12px;
+    text-overflow: ellipsis;
   }
 
   ${MenuItemA} {
