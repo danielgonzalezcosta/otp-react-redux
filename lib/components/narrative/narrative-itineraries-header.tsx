@@ -195,29 +195,9 @@ export default function NarrativeItinerariesHeader({
                   id: 'components.NarrativeItinerariesHeader.selectBest'
                 })}
               </option>
-              <option value="DURATION">
+              <option value="TRANSFERS">
                 {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectDuration'
-                })}
-              </option>
-              <option value="ARRIVALTIME">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectArrivalTime'
-                })}
-              </option>
-              <option value="DEPARTURETIME">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectDepartureTime'
-                })}
-              </option>
-              <option value="WALKTIME">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectWalkTime'
-                })}
-              </option>
-              <option value="COST">
-                {intl.formatMessage({
-                  id: 'components.NarrativeItinerariesHeader.selectCost'
+                  id: 'components.NarrativeItinerariesHeader.selectTransfers'
                 })}
               </option>
             </select>

@@ -340,7 +340,8 @@ components:
     selectCost: Cost
     selectDepartureTime: Departure time
     selectDuration: Duration
-    selectWalkTime: "Walk time"
+    selectTransfers: Transfers
+    selectWalkTime: Walk time
     sortBy: Sort By
     viewAll: View all routes
   NavLoginButton:
