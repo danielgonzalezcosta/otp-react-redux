@@ -301,7 +301,7 @@ class DefaultMap extends Component {
           <PointPopup />
           <RoutePreviewOverlay />
           {/* The default overlays */}
-          <EndpointsOverlay />
+          {/* <EndpointsOverlay /> */}
           <RouteViewerOverlay />
           <TransitVehicleOverlay ModeIcon={ModeIcon} />
           <StopViewerOverlay />
