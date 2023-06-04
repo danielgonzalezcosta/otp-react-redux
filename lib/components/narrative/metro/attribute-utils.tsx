@@ -6,8 +6,9 @@ import React from 'react'
 export const getFirstTransitLegStop = (
   itinerary: Itinerary
 ): string | undefined =>
-  itinerary.legs?.find((leg: Leg) => leg?.from?.vertexType === 'TRANSIT')?.from
-    ?.name
+  itinerary.legs?.find(
+    (leg: Leg) => leg.transitLeg && leg?.from?.vertexType === 'TRANSIT'
+  )?.from?.name
 
 export const getFlexAttirbutes = (
   itinerary: Itinerary

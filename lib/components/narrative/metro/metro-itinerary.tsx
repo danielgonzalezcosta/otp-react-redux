@@ -367,10 +367,11 @@ class MetroItinerary extends NarrativeItinerary {
                   LegIcon={LegIcon}
                   showLegDurations={showLegDurations}
                 />
-                <ItineraryDetails className="itin-details"
+                <ItineraryDetails
                   aria-label={intl.formatMessage({
                     id: 'components.ItinerarySummary.itineraryDetails'
                   })}
+                  className="itin-details"
                 >
                   <PrimaryInfo className="itin-duration">
                     <FormattedDuration
@@ -396,7 +397,6 @@ class MetroItinerary extends NarrativeItinerary {
                       )
                     )}
                   </SecondaryInfo>
-        
                 </ItineraryDetails>
                 <DepartureTimes className="itin-departures">
                   {arrivesAt ? (
@@ -424,7 +424,7 @@ class MetroItinerary extends NarrativeItinerary {
                 <SecondaryInfo as="span">
                   <ItineraryDescription itinerary={itinerary} />
                 </SecondaryInfo>
-                {this._renderMainRouteBlock(routeLegs)}
+                {routeLegs.length && this._renderMainRouteBlock(routeLegs)}
               </ItineraryGridSmall>
             )}
           </ItineraryWrapper>
