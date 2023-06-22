@@ -72,6 +72,7 @@ class BatchRoutingPanel extends Component<Props> {
               locationType="from"
               selfValidate={planTripClicked}
               showClearButton={!mobile}
+              className="location-from"
             />
             <LocationField
               inputPlaceholder={intl.formatMessage(
@@ -82,6 +83,7 @@ class BatchRoutingPanel extends Component<Props> {
               locationType="to"
               selfValidate={planTripClicked}
               showClearButton={!mobile}
+              className="location-to"
             />
             <div className="switch-button-container">
               <SwitchButton />
