@@ -46,7 +46,7 @@
   position: absolute;
   background: #000;
   border-radius: 10px;
-  top: 10vh;
+  top: 190px;
   left: 100px;
   padding-bottom: 30px;
   padding-top: 90px;
@@ -163,17 +163,38 @@ span.batch-routing-panel-location-fields input {
 
   margin: 0;
 }
-button#button-premium {
+button#button-premium[aria-pressed="false"] {
   width: 100px;
   display: inline-block;
   flex: unset;
   float: left;
   left: 0;
-  background-color: #444;
+  background-color: transparent;
+  border: 2px solid #444;
+  border-radius: 20px;
+  height: 35px;
+
+}
+button#button-premium[aria-pressed="false"] h4 {
+  color:#444;
+
+}
+
+button#button-premium[aria-pressed="true"] {
+  width: 100px;
+  display: inline-block;
+  flex: unset;
+  float: left;
+  left: 0;
+  background-color: gold;
   border: 2px solid gold;
   border-radius: 20px;
   height: 35px;
-  /* padding-top: 2px; */
+
+}
+button#button-premium[aria-pressed="true"] h4 {
+  color:black;
+
 }
 
 .premium-selected {
@@ -184,6 +205,8 @@ button#button-premium {
   top: 0;
   border-radius: 30px;
   right: 0;
+
+  display:none !important;
 }
 
 .switch-button{display:none;}
@@ -212,6 +235,10 @@ select.sort-accordion {
 }
 #itinerary-menu .expanded .itin-grid .itin-duration {
 margin-top:15px;
+}
+
+#itinerary-menu li.result {
+  position: relative;
 }
 
 
@@ -270,6 +297,24 @@ margin-top:15px;
 
 #itinerary-menu ul .result:nth-child(6):before {
   content: 'OPTION 6';
+  display: block;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-family: 'Brown-Bold';
+  font-size:12px;
+}
+#itinerary-menu ul .result:nth-child(7):before {
+  content: 'OPTION 7';
+  display: block;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-family: 'Brown-Bold';
+  font-size:12px;
+}
+#itinerary-menu ul .result:nth-child(8):before {
+  content: 'OPTION 8';
   display: block;
   position: absolute;
   margin-left: 10px;
@@ -336,5 +381,45 @@ html{background-color: #000;}
 .otp .user-settings {
   display:none !important;
 }
+
+#trip-details-header{display:none;}
+
+.trip-details-body div[role=group] {
+  width:33.33%;
+  float:left;
+}
+
+.trip-details-distance strong,.trip-details-duration strong,.trip-details-speed strong{display: block;font-size:28px;margin-top:5px;}
+
+.trip-details-body {
+  display: inline-block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color:#000;
+}
+
+
+.location-from:before {
+  content: 'From';
+  display: block;
+  color: #444;
+  position: absolute;
+  margin-top: -15px;
+}
+
+.location-to:before {
+  content: 'To';
+  display: block;
+  color: #444;
+  position: absolute;
+  margin-top: -15px;
+}
+
+
+#plan-trip{display: none;}
+
+
+
+
 
 
