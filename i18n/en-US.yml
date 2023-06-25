@@ -106,6 +106,10 @@ common:
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+    duration: Duration
+    modes: Modes of Transport
+    option: "Option {index}"
+    sustainability: Sustainability Rank
   linkOpensNewWindow: (Opens new window)
   modes:
     bicycle_rent: Bikeshare

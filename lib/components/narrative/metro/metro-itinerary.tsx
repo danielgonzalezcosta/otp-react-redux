@@ -1,41 +1,27 @@
-import { AccessibilityRating } from '@opentripplanner/itinerary-body'
 import { connect } from 'react-redux'
 import {
   FormattedMessage,
-  FormattedNumber,
   injectIntl,
   IntlShape
 } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
-import { Leaf } from '@styled-icons/fa-solid/Leaf'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import * as narrativeActions from '../../../actions/narrative'
 import * as uiActions from '../../../actions/ui'
 import { ComponentContext } from '../../../util/contexts'
-import { FlexIndicator } from '../default/flex-indicator'
-import {
-  getAccessibilityScoreForItinerary,
-  itineraryHasAccessibilityScores
-} from '../../../util/accessibility-routing'
-import { getActiveSearch, getFare } from '../../../util/state'
-import { IconWithText } from '../../util/styledIcon'
-import { ItineraryDescription } from '../default/itinerary-description'
+import { getActiveSearch } from '../../../util/state'
+import {Icon} from '../../util/styledIcon'
 import { localizeGradationMap } from '../utils'
 import FormattedDuration from '../../util/formatted-duration'
 import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
-import { DepartureTimesList } from './departure-times-list'
-import {
-  getFirstTransitLegStop,
-  getFlexAttirbutes,
-  removeInsignifigantWalkLegs
-} from './attribute-utils'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
+import {EmptyLeaf, SolidLeaf} from "./leaf";
 
 const { ItineraryView } = uiActions
 
@@ -45,145 +31,34 @@ const ItineraryWrapper = styled.div.attrs((props) => {
 })`
   border-bottom: 0.1ch solid #33333333;
   color: #333;
-  display: grid; /* We don't use grid here, but "block" and "inline" cause problems with Firefox */
-  padding: 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
 `
 
-const DepartureTimes = styled.span`
-  align-self: flex-end;
-  color: #0909098f;
-  font-size: 14px;
-  text-overflow: ellipsis;
-  width: 100%;
-
-  .active {
-    color: #090909ee;
-    cursor: auto;
-  }
-
-  div.header {
-    background: none;
-    border: none;
-    display: inline;
-    margin: 0;
-    padding: 0;
-    transition: all 0.1s ease-out;
-  }
+const ItineraryHeaderItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `
 
-const ItineraryDetails = styled.ul`
-  grid-column-start: -1;
-  grid-row: 1 / span 2;
-  justify-self: right;
-  list-style: none;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  width: 90%;
-`
-const PrimaryInfo = styled.li`
-  color: #fff;
-  font-size: 22px;
-  font-weight: 600;
-  text-align: right;
+const ItineraryHeaderItemTitle = styled.div`
+  font-size: 0.7em;
+  display: block;
+  font-variant: small-caps;
 `
 
-const SecondaryInfo = styled.li`
-  color: #fff;
-  font-size: 12px;
-  opacity: 1;
-  text-align: right;
+const ItineraryHeaderItemContent = styled.div`
+  display: block;
 `
 
-const ItineraryNote = styled.div`
-  background: mediumseagreen;
-  color: white;
-  padding: 4px 8px;
-  text-align: right;
+const StyledLeafIcon = styled.span`
+  display: inline-block;
+  height: 15px;
 `
-
-const ItineraryGrid = styled.div`
-  display: grid;
-  gap: 7px;
-  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-  padding: 10px 1em;
-
-  ${ItineraryDetails} {
-    ${SecondaryInfo} {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      &.flex {
-        color: orangered;
-        white-space: normal;
-        text-overflow: inherit;
-        grid-row: span 4;
-      }
-    }
-  }
-
-  ${SecondaryInfo} {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    &.flex {
-      color: orangered;
-      white-space: normal;
-      text-overflow: inherit;
-    }
-  }
-
-  svg {
-    /* Fix for safari, where svg needs explicit width to render */
-    width: 40px;
-    /* Fix for our svg icons, which tend to be slightly off-center */
-    &:not(.no-centering-fix) {
-      margin-left: 0px;
-    }
-  }
-`
-
-const ItineraryGridSmall = styled.button`
-  border-radius: 10px;
-  display: grid;
-  gap: 0 2px;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(10, 8px);
-  padding: 10px 1em;
-
-  ${PrimaryInfo} {
-    font-size: 100%;
-    grid-column: 2;
-    grid-row: 2 / 5;
-    line-height: 1;
-  }
-
-  ${SecondaryInfo} {
-    grid-column: 2;
-    grid-row: 8;
-  }
-
-  span.route-block-wrapper {
-    grid-row: 2 / 5;
-  }
-`
-
-const BLUR_AMOUNT = 3
-const blurAnimation = keyframes`
- 0% { filter: blur(${BLUR_AMOUNT}px); }
- 50% { filter: blur(${BLUR_AMOUNT + 1}px) }
-`
-
-const LoadingBlurred = styled.span<{ loading: boolean }>`
-  ${(props) => props.loading && `filter: blur(${BLUR_AMOUNT}px)`};
-  animation-name: ${(props) => (props.loading ? blurAnimation : '')};
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  transition: all 0.2s ease-in-out;
-`
-
 type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
@@ -226,106 +101,78 @@ class MetroItinerary extends NarrativeItinerary {
     }
   }
 
-  _renderMainRouteBlock = (legs: Leg[]) => {
-    const { enableDot, LegIcon, showLegDurations } = this.props
-    const mainLeg = legs
-      // Sort to ensure non-walk leg is first
-      .sort((a: Leg, b: Leg) => b.distance - a.distance)[0]
-    return (
-      <RouteBlock
-        aria-hidden
-        footer={
-          showLegDurations && <FormattedDuration duration={mainLeg.duration} />
-        }
-        hideLongName
-        leg={mainLeg}
-        LegIcon={LegIcon}
-        showDivider={enableDot}
-      />
-    )
-  }
-
   // eslint-disable-next-line complexity
   render() {
     const {
       accessibilityScoreGradationMap,
       active,
-      activeItineraryTimeIndex,
-      arrivesAt,
       co2Config,
-      currency,
-      defaultFareKey,
-      enableDot,
       expanded,
       intl,
       itinerary,
       LegIcon,
-      mini,
-      pending,
       setActiveItinerary,
       setActiveLeg,
-      setItineraryTimeIndex,
       setItineraryView,
-      showLegDurations,
       showRealtimeAnnotation
     } = this.props
     const { SvgIcon } = this.context
 
-    const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
-      getFlexAttirbutes(itinerary)
+    const durationItem =
+        <ItineraryHeaderItem className="itin-duration">
+          <ItineraryHeaderItemTitle>
+            <FormattedMessage id="common.itineraryDescriptions.option" values={{index: this.props.optionNumber + 1}} />
+          </ItineraryHeaderItemTitle>
+          <ItineraryHeaderItemContent>
+            <FormattedDuration
+                duration={itinerary.duration}
+                includeSeconds={false}
+            />
+          </ItineraryHeaderItemContent>
+        </ItineraryHeaderItem>;
 
-    const { fareCurrency, transitFare } = getFare(
-      itinerary,
-      defaultFareKey,
-      currency
-    )
+    const modes = new Map<string, Leg>();
+    itinerary.legs.filter((leg: Leg) => leg.transitLeg).forEach((leg: Leg) => modes.set(leg.mode, leg));
 
-    const roundedCo2VsBaseline = Math.round(itinerary.co2VsBaseline * 100)
-    const emissionsNote = !mini &&
-      Math.abs(roundedCo2VsBaseline) >= (co2Config?.cutoffPercentage || 0) &&
-      (roundedCo2VsBaseline < 0 || co2Config?.showIfHigher) &&
-      co2Config?.enabled && (
-        <IconWithText Icon={Leaf}>
-          <FormattedMessage
-            id="common.itineraryDescriptions.relativeCo2"
-            values={{
-              co2: (
-                <LoadingBlurred loading={pending}>
-                  <FormattedNumber
-                    // FormattedNumber style prop is not about CSS.
-                    // eslint-disable-next-line react/style-prop-object
-                    style="unit"
-                    unit="percent"
-                    unitDisplay="narrow"
-                    value={Math.abs(roundedCo2VsBaseline)}
-                  />
-                </LoadingBlurred>
-              ),
-              isMore: roundedCo2VsBaseline > 0
-            }}
-          />
-        </IconWithText>
-      )
+    const modesItem =
+        <ItineraryHeaderItem className="itin-modes">
+          <ItineraryHeaderItemTitle>
+            <FormattedMessage id="common.itineraryDescriptions.modes" />
+          </ItineraryHeaderItemTitle>
+          <ItineraryHeaderItemContent>
+            { Array.from(modes.values()).sort((a, b) => (a.routeType || 0) - (b.routeType || 0)).map(leg => <LegIcon height="25" width="25" leg={leg}/>) }
+          </ItineraryHeaderItemContent>
+        </ItineraryHeaderItem>;
+
+    const { co2Category } = itinerary
+    const sustainabilityItem = co2Config.enabled && co2Category && <ItineraryHeaderItem className="itin-sustainability">
+          <ItineraryHeaderItemTitle>
+            <FormattedMessage id="common.itineraryDescriptions.sustainability" />
+          </ItineraryHeaderItemTitle>
+          <ItineraryHeaderItemContent>
+            <StyledLeafIcon><Icon Icon={SolidLeaf} /></StyledLeafIcon>
+            <StyledLeafIcon><Icon Icon={co2Category !== 'high' ? SolidLeaf : EmptyLeaf} /></StyledLeafIcon>
+            <StyledLeafIcon><Icon Icon={co2Category === 'low' ? SolidLeaf : EmptyLeaf} /></StyledLeafIcon>
+          </ItineraryHeaderItemContent>
+        </ItineraryHeaderItem>;
+
     const localizedGradationMapWithIcons = localizeGradationMap(
       intl,
       SvgIcon,
       accessibilityScoreGradationMap
-    )
-
-    const firstTransitStop = getFirstTransitLegStop(itinerary)
-    const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
+    );
 
     const handleClick = () => {
-      setActiveItinerary(itinerary)
-      setActiveLeg(null, null)
-      setItineraryView(ItineraryView.FULL)
+      setActiveItinerary(itinerary);
+      setActiveLeg(null, null);
+      setItineraryView(ItineraryView.FULL);
       // Reset the scroll. Refs would be the more
       // appropriate way to do this, but they don't work
       setTimeout(
         () => document.querySelector('.itin-wrapper')?.scrollIntoView(),
         10
-      )
-    }
+      );
+    };
 
     // Use first leg's agency as a fallback
     return (
@@ -350,83 +197,10 @@ class MetroItinerary extends NarrativeItinerary {
           // TODO test this with a screen reader
           // tabIndex={expanded ? 1 : 0}
         >
-          <ItineraryWrapper className={`itin-wrapper${mini ? '-small' : ''}`}>
-            {emissionsNote && <ItineraryNote>{emissionsNote}</ItineraryNote>}
-            {itineraryHasAccessibilityScores(itinerary) && (
-              <AccessibilityRating
-                gradationMap={localizedGradationMapWithIcons}
-                score={getAccessibilityScoreForItinerary(itinerary)}
-              />
-            )}
-            {!mini && (
-              <ItineraryGrid className="itin-grid" role="group">
-                {/* TODO: a11y: add aria-label to parent element */}
-                <MetroItineraryRoutes
-                  expanded={expanded}
-                  itinerary={itinerary}
-                  LegIcon={LegIcon}
-                  showLegDurations={showLegDurations}
-                />
-                <ItineraryDetails
-                  aria-label={intl.formatMessage({
-                    id: 'components.ItinerarySummary.itineraryDetails'
-                  })}
-                  className="itin-details"
-                >
-                  <PrimaryInfo className="itin-duration">
-                    <FormattedDuration
-                      duration={itinerary.duration}
-                      includeSeconds={false}
-                    />
-                  </PrimaryInfo>
-                  <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
-                    {isFlexItinerary ? (
-                      <FlexIndicator
-                        isCallAhead={isCallAhead}
-                        isContinuousDropoff={isContinuousDropoff}
-                        phoneNumber={phone}
-                        shrink={false}
-                        textOnly
-                      />
-                    ) : (
-                      firstTransitStop && (
-                        <FormattedMessage
-                          id="components.MetroUI.fromStop"
-                          values={{ stop: firstTransitStop }}
-                        />
-                      )
-                    )}
-                  </SecondaryInfo>
-                </ItineraryDetails>
-                <DepartureTimes className="itin-departures">
-                  {arrivesAt ? (
-                    <FormattedMessage id="components.MetroUI.arriveAt" />
-                  ) : (
-                    <FormattedMessage id="components.MetroUI.leaveAt" />
-                  )}{' '}
-                  <DepartureTimesList
-                    activeItineraryTimeIndex={activeItineraryTimeIndex}
-                    itinerary={itinerary}
-                    setItineraryTimeIndex={setItineraryTimeIndex}
-                    showArrivals={arrivesAt}
-                  />
-                </DepartureTimes>
-              </ItineraryGrid>
-            )}
-            {mini && (
-              <ItineraryGridSmall className="other-itin">
-                <PrimaryInfo as="span">
-                  <FormattedDuration
-                    duration={itinerary.duration}
-                    includeSeconds={false}
-                  />
-                </PrimaryInfo>
-                <SecondaryInfo as="span">
-                  <ItineraryDescription itinerary={itinerary} />
-                </SecondaryInfo>
-                {routeLegs.length && this._renderMainRouteBlock(routeLegs)}
-              </ItineraryGridSmall>
-            )}
+          <ItineraryWrapper className={`itin-wrapper`}>
+            {durationItem}
+            {modesItem}
+            {sustainabilityItem}
           </ItineraryWrapper>
         </div>
         {active && expanded && (

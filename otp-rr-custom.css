@@ -240,89 +240,6 @@ margin-top:15px;
 #itinerary-menu li.result {
   position: relative;
 }
-
-
-#itinerary-menu ul .result:nth-child(1):before {
-  content: 'OPTION 1';
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Brown-Bold';
-  font-size:12px;
-}
-
-#itinerary-menu ul .result:nth-child(2):before {
-  content: 'OPTION 2';
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Brown-Bold';
-  font-size:12px;
-}
-
-
-#itinerary-menu ul .result:nth-child(3):before {
-  content: 'OPTION 3';
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Brown-Bold';
-  font-size:12px;
-}
-
-
-#itinerary-menu ul .result:nth-child(4):before {
-  content: 'OPTION 4';
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Brown-Bold';
-  font-size:12px;
-}
-
-
-#itinerary-menu ul .result:nth-child(5):before {
-  content: 'OPTION 5';
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Brown-Bold';
-  font-size:12px;
-}
-
-#itinerary-menu ul .result:nth-child(6):before {
-  content: 'OPTION 6';
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Brown-Bold';
-  font-size:12px;
-}
-#itinerary-menu ul .result:nth-child(7):before {
-  content: 'OPTION 7';
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Brown-Bold';
-  font-size:12px;
-}
-#itinerary-menu ul .result:nth-child(8):before {
-  content: 'OPTION 8';
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Brown-Bold';
-  font-size:12px;
-}
-
 .clear-button-formatting{color:white}
 
 .otp .option.metro-itin.expanded:first-of-type div.header .itin-wrapper {
@@ -418,8 +335,14 @@ html{background-color: #000;}
 
 #plan-trip{display: none;}
 
+.otp .option.metro-itin .itin-wrapper .itin-duration {
+  min-width: 80px;
+}
 
+.otp .option.metro-itin .itin-wrapper .itin-modes {
+  flex-grow: 1;
+}
 
-
-
-
+.otp .option.metro-itin .itin-wrapper .itin-modes svg+svg {
+  margin-left: 5px;
+}
