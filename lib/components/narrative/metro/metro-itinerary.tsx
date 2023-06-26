@@ -132,7 +132,7 @@ class MetroItinerary extends NarrativeItinerary {
         </ItineraryHeaderItem>;
 
     const modes = new Map<string, Leg>();
-    itinerary.legs.filter((leg: Leg) => leg.transitLeg).forEach((leg: Leg) => modes.set(leg.mode, leg));
+    itinerary.legs.forEach((leg: Leg) => modes.set(leg.mode, leg));
 
     const modesItem =
         <ItineraryHeaderItem className="itin-modes">
@@ -140,7 +140,7 @@ class MetroItinerary extends NarrativeItinerary {
             <FormattedMessage id="common.itineraryDescriptions.modes" />
           </ItineraryHeaderItemTitle>
           <ItineraryHeaderItemContent>
-            { Array.from(modes.values()).sort((a, b) => (a.routeType || 0) - (b.routeType || 0)).map(leg => <LegIcon height="25" width="25" leg={leg}/>) }
+            { Array.from(modes.values()).sort((a, b) => (a.routeType || -1) - (b.routeType || -1)).map(leg => <LegIcon height="25" width="25" leg={leg}/>) }
           </ItineraryHeaderItemContent>
         </ItineraryHeaderItem>;
 
