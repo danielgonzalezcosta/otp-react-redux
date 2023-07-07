@@ -31,7 +31,7 @@ const ItineraryWrapper = styled.div.attrs((props) => {
 })`
   border-bottom: 0.1ch solid #33333333;
   color: #333;
-  padding: 15px;
+  padding: 35px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -42,22 +42,26 @@ const ItineraryWrapper = styled.div.attrs((props) => {
 const ItineraryHeaderItem = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `
 
 const ItineraryHeaderItemTitle = styled.div`
-  font-size: 0.7em;
+  font-size: 11px;
   display: block;
-  font-variant: small-caps;
+  text-transform: uppercase;
 `
 
 const ItineraryHeaderItemContent = styled.div`
   display: block;
+  font-size:24px;
+  margin-top:10px;
 `
 
 const StyledLeafIcon = styled.span`
   display: inline-block;
-  height: 15px;
+  height: 22px;
+  margin-right:2px;
+  margin-left:2px;
 `
 type Props = {
   LegIcon: React.ReactNode
@@ -123,7 +127,7 @@ class MetroItinerary extends NarrativeItinerary {
           <ItineraryHeaderItemTitle>
             <FormattedMessage id="common.itineraryDescriptions.option" values={{index: this.props.optionNumber + 1}} />
           </ItineraryHeaderItemTitle>
-          <ItineraryHeaderItemContent>
+          <ItineraryHeaderItemContent className="itin-duration-time">
             <FormattedDuration
                 duration={itinerary.duration}
                 includeSeconds={false}
@@ -140,19 +144,23 @@ class MetroItinerary extends NarrativeItinerary {
             <FormattedMessage id="common.itineraryDescriptions.modes" />
           </ItineraryHeaderItemTitle>
           <ItineraryHeaderItemContent>
-            { Array.from(modes.values()).sort((a, b) => (a.routeType || -1) - (b.routeType || -1)).map(leg => <LegIcon height="25" width="25" leg={leg}/>) }
+            { Array.from(modes.values()).sort((a, b) => (a.routeType || -1) - (b.routeType || -1)).map(leg => <LegIcon height="45" width="45" leg={leg}/>) }
           </ItineraryHeaderItemContent>
         </ItineraryHeaderItem>;
 
-    const { co2Category } = itinerary
+    const { co2Category,co2 } = itinerary
     const sustainabilityItem = co2Config.enabled && co2Category && <ItineraryHeaderItem className="itin-sustainability">
           <ItineraryHeaderItemTitle>
             <FormattedMessage id="common.itineraryDescriptions.sustainability" />
           </ItineraryHeaderItemTitle>
-          <ItineraryHeaderItemContent>
+          <ItineraryHeaderItemContent className="itin-sustainability-content">
             <StyledLeafIcon><Icon Icon={SolidLeaf} /></StyledLeafIcon>
             <StyledLeafIcon><Icon Icon={co2Category !== 'high' ? SolidLeaf : EmptyLeaf} /></StyledLeafIcon>
             <StyledLeafIcon><Icon Icon={co2Category === 'low' ? SolidLeaf : EmptyLeaf} /></StyledLeafIcon>
+            <span className="sustainability-value">
+              {Math.round((co2/1000) * 100) / 100}
+              <span className="sustainability-units">KWH/PASSENGER</span>
+            </span>
           </ItineraryHeaderItemContent>
         </ItineraryHeaderItem>;
 
