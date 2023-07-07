@@ -46,7 +46,7 @@
   position: absolute;
   background: #000;
   border-radius: 10px;
-  top: 190px;
+  top: 210px;
   left: 100px;
   padding-bottom: 30px;
   padding-top: 90px;
@@ -59,15 +59,15 @@
   background: black;
   width: 18%;
   min-width: 350px;
-  height: 80px;
+  height: 95px;
   z-index: 99999;
   top: 80px;
   left: 90px;
   border-radius: 10px;
-  padding-left:40px;
+  padding-left: 40px;
   padding-right: 40px;
-  padding-top:20px;
-  color:white;
+  padding-top: 27px;
+  color: white;
 }
 
 .map-container {
@@ -92,7 +92,7 @@ canvas{width:100vw;height:100vh}
 .text-sidebar-header{float:left;}
 
 .logo-neom img {
-  width: 35px;
+  width: 41px;
   margin-right: 30px;
 }
 .mapboxgl-popup-content p:first-of-type{display:none;}
@@ -100,26 +100,26 @@ canvas{width:100vw;height:100vh}
 span.batch-routing-panel-location-fields input {
   background: black;
   color: white;
-  font-size: 22px;
+  font-size: 26px;
   margin-left: -41px;
 }
 
 .batch-routing-panel-location-fields:before{
   content:'';
   display:block;
-  width:50px;
+  width:80px;
   border-bottom:1px solid #999;
   height:1px;
-  margin-bottom:20px
+  margin-bottom:30px
 }
 .batch-routing-panel-location-fields:after{
   content:'';
   display:block;
-  width:50px;
+  width:80px;
   border-bottom:1px solid #999;
   height:1px;
   margin-bottom:50px;
-  margin-top: -15px;
+  margin-top: -10px;
 }
 
 .location-fields-from:before {
@@ -142,6 +142,8 @@ span.batch-routing-panel-location-fields input {
   margin-top: -10px;
 }
 
+.location-to{margin-top:25px;}
+
 .location-fields-from button:first-of-type(svg), .location-fields-to button:first-of-type(svg) {
  display: none;
 }
@@ -156,23 +158,27 @@ span.batch-routing-panel-location-fields input {
 
 .itin-wrapper ul{width:100%;}
 
-.form fieldset div{width:100px;font-size: 12px;}
+.form fieldset div{width:120px;font-size: 12px;}
 .form fieldset h4 {
-  font-size: 14px;
+  font-size: 16px;
   color: gold;
-
   margin: 0;
 }
+
+
+
+button#button-premium{margin-top:40px;}
+
 button#button-premium[aria-pressed="false"] {
-  width: 100px;
+  width: 150px;
   display: inline-block;
   flex: unset;
   float: left;
   left: 0;
   background-color: transparent;
   border: 2px solid #444;
-  border-radius: 20px;
-  height: 35px;
+  border-radius: 7px;
+  height: 40px;
 
 }
 button#button-premium[aria-pressed="false"] h4 {
@@ -181,15 +187,15 @@ button#button-premium[aria-pressed="false"] h4 {
 }
 
 button#button-premium[aria-pressed="true"] {
-  width: 100px;
+  width: 150px;
   display: inline-block;
   flex: unset;
   float: left;
   left: 0;
   background-color: gold;
   border: 2px solid gold;
-  border-radius: 20px;
-  height: 35px;
+  border-radius: 7px;
+  height: 40px;
 
 }
 button#button-premium[aria-pressed="true"] h4 {
@@ -203,7 +209,7 @@ button#button-premium[aria-pressed="true"] h4 {
   color: transparent !important;
   background: rgba(0,128,0,0.4);
   top: 0;
-  border-radius: 30px;
+  border-radius: 7px;
   right: 0;
 
   display:none !important;
@@ -240,7 +246,12 @@ margin-top:15px;
 #itinerary-menu li.result {
   position: relative;
 }
-.clear-button-formatting{color:white}
+.clear-button-formatting {
+  color: white;
+  width: 100%;
+  text-align: right;
+  margin-left: -16px;
+}
 
 .otp .option.metro-itin.expanded:first-of-type div.header .itin-wrapper {
   border-bottom: none;
@@ -313,6 +324,7 @@ html{background-color: #000;}
   padding-top: 20px;
   padding-bottom: 20px;
   color:#000;
+  width: 100%;
 }
 
 
@@ -321,7 +333,8 @@ html{background-color: #000;}
   display: block;
   color: #444;
   position: absolute;
-  margin-top: -15px;
+  margin-top: -18px;
+  font-size: 18px;
 }
 
 .location-to:before {
@@ -329,14 +342,16 @@ html{background-color: #000;}
   display: block;
   color: #444;
   position: absolute;
-  margin-top: -15px;
+  margin-top: -18px;
+  font-size: 18px;
 }
 
 
 #plan-trip{display: none;}
 
 .otp .option.metro-itin .itin-wrapper .itin-duration {
-  min-width: 80px;
+  min-width: 170px;
+  
 }
 
 .otp .option.metro-itin .itin-wrapper .itin-modes {
@@ -346,3 +361,43 @@ html{background-color: #000;}
 .otp .option.metro-itin .itin-wrapper .itin-modes svg+svg {
   margin-left: 5px;
 }
+
+.otp .option.metro-itin .itin-wrapper .itin-duration .itin-duration-time {
+  font-family: 'Brown-Bold';
+  margin-top:10px !important;
+}
+
+.options.header select{
+  background: transparent;
+  color:white;
+  border: 0px solid;
+  border-bottom: 1px solid white;
+}
+
+
+.otp .options > .header {
+  
+  margin-bottom: 40px;
+}
+
+.desktop-narrative-container{margin-top:-63px;}
+
+span.sustainability-value {
+  font-size: 16px;
+  display: inline-block;
+  margin-left: 10px;
+  line-height: 14px;
+  vertical-align: 0px;
+}
+
+span.sustainability-units {
+  font-size: 8px;
+  display: block;
+}
+
+.itin-sustainability-content {
+  padding-top: 8px;
+}
+
+
+.trip-tools-container{display: none;}
