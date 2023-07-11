@@ -16,7 +16,11 @@ import {
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
-import { getActiveItinerary, getActiveSearch } from '../../util/state'
+import {
+  getActiveItinerary,
+  getActiveSearch,
+  getItineraryToRender
+} from '../../util/state'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
@@ -415,7 +419,7 @@ const mapStateToProps = (state) => {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
-    itinerary: getActiveItinerary(state),
+    itinerary: getItineraryToRender(state),
     mapConfig: state.otp.config.map,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
