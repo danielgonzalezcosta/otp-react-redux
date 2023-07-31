@@ -29,6 +29,7 @@ const InvisibleHeader = styled.h1`
   width: 0;
 `
 
+
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   errors,
@@ -45,6 +46,9 @@ export default function NarrativeItinerariesHeader({
   showHeaderText = true,
   showingErrors,
   sort
+
+
+  
 }: {
   customBatchUiBackground?: boolean
   errors: unknown[]
@@ -75,6 +79,8 @@ export default function NarrativeItinerariesHeader({
     },
     { issueNum: errors.length }
   )
+
+
 
   return (
     <div
@@ -163,7 +169,7 @@ export default function NarrativeItinerariesHeader({
               </button>
             )}
             <button
-              className="clear-button-formatting"
+              className="clear-button-formatting order-change-button"
               onClick={onSortDirChange}
               title={intl.formatMessage({
                 id: 'components.NarrativeItinerariesHeader.changeSortDir'
@@ -179,7 +185,38 @@ export default function NarrativeItinerariesHeader({
                 )}
               </StyledIconWrapper>
             </button>
+
+
+
+          <div className="radios-route-container">
+              <div className="radio-route">
+                <input
+                  type="radio"
+                  name="route"
+                  value="BEST"
+                  id="best"
+                  onChange={onSortChange}
+                  defaultChecked
+                />
+                <label htmlFor="best"><h4>{intl.formatMessage({id: 'components.NarrativeItinerariesHeader.selectBest'})}</h4></label>
+              </div>
+
+              <div className="radio-route">
+                <input
+                  type="radio"
+                  name="route"
+                  value="TRANSFERS"
+                  id="transfers"
+                  onChange={onSortChange}
+                />
+                <label htmlFor="transfers"><h4>{intl.formatMessage({id: 'components.NarrativeItinerariesHeader.selectTransfers'})}</h4></label>
+                </div>  
+            </div>    
+
+
+
             <select
+              className="select-route"
               aria-label={intl.formatMessage({
                 id: 'components.NarrativeItinerariesHeader.sortBy'
               })}
