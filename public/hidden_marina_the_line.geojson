@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NEOM U",
+        "gtfsId": "neom:static_jgp0",
+        "elevation": 200
+      },
+      "geometry": {
+        "coordinates": [
+          34.98190793660001,
+          28.126463458503608,
+          200
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hospital",
+        "gtfsId": "neom:static_puvo",
+        "elevation": 100
+      },
+      "geometry": {
+        "coordinates": [
+          34.983062609361525,
+          28.126442020258366,
+          100
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    }
+  ]
+}
