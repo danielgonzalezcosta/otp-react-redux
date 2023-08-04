@@ -4,14 +4,15 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Project Y",
-        "gtfsId": "neom:static_xj9u"
+        "name": "NEOM U",
+        "gtfsId": "neom:static_jgp0"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          35.00139564045,
-          28.12491708979
+          34.98224082860,
+          28.12654124491,
+          200
         ]
       }
     },
@@ -33,36 +34,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Museum",
-        "gtfsId": "neom:static_f3bh"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.98981297114,
-          28.12589919852,
-          100
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Convention Centre",
-        "gtfsId": "neom:static_7tcg"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.99428102168,
-          28.12552034811,
-          0
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "name": "Stadium",
         "gtfsId": "neom:static_sn4d"
       },
@@ -78,96 +49,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "NEOM HQ",
-        "gtfsId": "neom:static_1lie"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.99086959454,
-          28.12580960650,
-          0
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "NEOM U",
-        "gtfsId": "neom:static_jgp0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.98224082860,
-          28.12654124491,
-          200
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Sports City",
-        "gtfsId": "neom:static_h85m"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.97978860594,
-          28.12674916948,
-          0
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "7 Star Hotel",
-        "gtfsId": "neom:static_he56"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.99962723992,
-          28.12506703522,
-          100
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Theatre",
-        "gtfsId": "neom:static_78dv"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.99634568378,
-          28.12534528292,
-          300
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Sports Arena",
-        "gtfsId": "neom:static_pz21"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.98744146444,
-          28.12610028038,
-          200
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "name": "Chandelier",
         "gtfsId": "neom:static_mts1"
       },
@@ -176,36 +57,6 @@
         "coordinates": [
           34.99189631790,
           28.12572254966,
-          300
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Hospital",
-        "gtfsId": "neom:static_puvo"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.98494359252,
-          28.12631207642,
-          100
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Library",
-        "gtfsId": "neom:static_xdka"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          34.98163312678,
-          28.12659277214,
           300
         ]
       }
