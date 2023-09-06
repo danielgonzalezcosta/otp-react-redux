@@ -3,7 +3,7 @@
 // @ts-nocheck
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
-import { NavigationControl } from 'react-map-gl'
+import { NavigationControl, ScaleControl } from 'react-map-gl'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
@@ -404,6 +404,7 @@ class DefaultMap extends Component {
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
           <NavigationControl position="bottom-right" />
+          <ScaleControl />
         </BaseMap>
       </MapContainer>
     )
