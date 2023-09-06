@@ -215,7 +215,7 @@ button#button-premium[aria-pressed="true"] h4 {
   display:none !important;
 }
 
-.switch-button{display:none;}
+
 
 button#plan-trip {
   width: 50px;
@@ -471,4 +471,11 @@ span.sustainability-units {
 }
 
 .order-change-button{margin-top: 10px;}
+
+.otp .switch-button-container {
+  position: absolute;
+  top: 72px;
+  right: 32px;
+  z-index: 100000;
+}
 
