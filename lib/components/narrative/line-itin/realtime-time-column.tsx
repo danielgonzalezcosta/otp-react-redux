@@ -4,9 +4,11 @@ import { Leg } from '@opentripplanner/types'
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
+
+
 import RealtimeStatusLabel, {
   DelayText,
-  MainContent
+  MainContent,
 } from '../../viewers/realtime-status-label'
 
 interface Props {
@@ -31,8 +33,28 @@ function RealtimeTimeColumn({ isDestination, leg }: Props): ReactElement {
   const timeMillis = isDestination ? leg.endTime : leg.startTime
   const isTransitLeg = isTransit(leg.mode)
   const isRealtimeTransitLeg = isTransitLeg && leg.realTime
+  const delaySeconds = isDestination ? leg.arrivalDelay : leg.departureDelay
+  const originalTimeMillis = timeMillis - delaySeconds * 1000
 
-  // For non-transit legs show only the scheduled time.
+
+
+
+  if (!isTransitLeg) {
+    if(leg.mode === "WALK" || leg.mode === "CAR" || leg.mode === 'MICROMOBILITY' || leg.mode === 'BUS' ) {
+        return (<div className='legtime'>{Math.floor((leg.duration) / 60)} min</div> )
+    } else {
+        return (<div className='legtime'>{Math.floor((leg.duration + 120) / 60)} min</div>)
+    }
+  } else {
+    if(leg.mode === "WALK" || leg.mode === "CAR" || leg.mode === 'MICROMOBILITY' || leg.mode === 'BUS') {
+      return (<div className='legtime'>{Math.floor((leg.duration) / 60)} min</div>)
+    } else {
+      return (<div className='legtime'>{Math.floor((leg.duration + 120) / 60)} min</div>)
+    }
+  }
+  
+
+  /*
   if (!isTransitLeg) {
     return (
       <div>
@@ -40,9 +62,9 @@ function RealtimeTimeColumn({ isDestination, leg }: Props): ReactElement {
       </div>
     )
   }
+  */
 
-  const delaySeconds = isDestination ? leg.arrivalDelay : leg.departureDelay
-  const originalTimeMillis = timeMillis - delaySeconds * 1000
+
 
   return (
     <StyledStatusLabel
@@ -51,7 +73,9 @@ function RealtimeTimeColumn({ isDestination, leg }: Props): ReactElement {
       originalTime={originalTimeMillis}
       time={timeMillis}
     />
+
   )
 }
 
 export default RealtimeTimeColumn
+
