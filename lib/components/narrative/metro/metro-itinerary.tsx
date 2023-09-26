@@ -138,16 +138,40 @@ class MetroItinerary extends NarrativeItinerary {
     const modes = new Map<string, Leg>();
     itinerary.legs.forEach((leg: Leg) => modes.set(leg.mode, leg));
 
+
+    // REMOVE DUPLICATE ICONS
+    const legIcons: JSX.Element[] = [];
+    let railSubwayExists = false;
+   
+
+    Array.from(modes.values()).forEach(leg => {
+
+      if (leg && leg.mode) {
+        if (leg.mode === "RAIL" || leg.mode === "SUBWAY") {
+          if (!railSubwayExists) {
+            railSubwayExists = true;
+            legIcons.push(<LegIcon height="45" width="45" leg={leg} />);
+          }
+        } else {
+          legIcons.push(<LegIcon height="45" width="45" leg={leg} />);
+        }
+      }
+    });
+
+    // { Array.from(modes.values()).sort((a, b) => (a.routeType || -1) - (b.routeType || -1)).map(leg => <LegIcon height="45" width="45" leg={leg}/>) }
+    
+
+
     const modesItem =
         <ItineraryHeaderItem className="itin-modes">
           <ItineraryHeaderItemTitle>
             <FormattedMessage id="common.itineraryDescriptions.modes" />
           </ItineraryHeaderItemTitle>
           <ItineraryHeaderItemContent>
-            { Array.from(modes.values()).sort((a, b) => (a.routeType || -1) - (b.routeType || -1)).map(leg => <LegIcon height="45" width="45" leg={leg}/>) }
+            {legIcons}
           </ItineraryHeaderItemContent>
         </ItineraryHeaderItem>;
-
+        
     const { co2Category,co2 } = itinerary
     const sustainabilityItem = co2Config.enabled && co2Category && <ItineraryHeaderItem className="itin-sustainability">
           <ItineraryHeaderItemTitle>
