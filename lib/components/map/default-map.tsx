@@ -403,8 +403,8 @@ class DefaultMap extends Component {
           {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
-          <NavigationControl position="bottom-right" />
-          <ScaleControl />
+          <NavigationControl  position="bottom-left" />
+          <ScaleControl position="bottom-right"/>
         </BaseMap>
       </MapContainer>
     )
