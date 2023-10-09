@@ -37,7 +37,7 @@
 }
 
 .sidebar {
-  height: 84vh;
+  height: 80vh;
   padding: 30px;
   box-shadow: 3px 0px 12px #00000052;
   z-index: 1000;
@@ -245,7 +245,177 @@ margin-top:15px;
 
 #itinerary-menu li.result {
   position: relative;
+  animation: fadeInOptions 0.5s linear;
+  animation-fill-mode: both;
 }
+
+#itinerary-menu .result .expanded ol li {
+  position: relative;
+  animation: fadeInLegs 0.5s linear;
+  animation-fill-mode: both;
+}
+
+
+
+
+#itinerary-menu li.result:nth-child(1), #itinerary-menu .result .expanded ol li:nth-child(1) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+#itinerary-menu li.result:nth-child(2), #itinerary-menu .result .expanded ol li:nth-child(2) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+#itinerary-menu li.result:nth-child(3), #itinerary-menu .result .expanded ol li:nth-child(3) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+#itinerary-menu li.result:nth-child(4), #itinerary-menu .result .expanded ol li:nth-child(4) {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+#itinerary-menu li.result:nth-child(5), #itinerary-menu .result .expanded ol li:nth-child(5) {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+#itinerary-menu li.result:nth-child(6), #itinerary-menu .result .expanded ol li:nth-child(6) {
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+#itinerary-menu li.result:nth-child(7), #itinerary-menu .result .expanded ol li:nth-child(7) {
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+#itinerary-menu li.result:nth-child(8), #itinerary-menu .result .expanded ol li:nth-child(8) {
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+#itinerary-menu li.result:nth-child(8), #itinerary-menu .result .expanded ol li:nth-child(9) {
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+#itinerary-menu li.result:nth-child(8), #itinerary-menu .result .expanded ol li:nth-child(10) {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+#itinerary-menu li.result:nth-child(8), #itinerary-menu .result .expanded ol li:nth-child(11) {
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
+}
+#itinerary-menu li.result:nth-child(8), #itinerary-menu .result .expanded ol li:nth-child(12) {
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
+}
+#itinerary-menu li.result:nth-child(8), #itinerary-menu .result .expanded ol li:nth-child(13) {
+  -webkit-animation-delay: 2.6s;
+          animation-delay: 2.6s;
+}
+#itinerary-menu li.result:nth-child(8), #itinerary-menu .result .expanded ol li:nth-child(14) {
+  -webkit-animation-delay: 2.8s;
+          animation-delay: 2.8s;
+}
+#itinerary-menu li.result:nth-child(8), #itinerary-menu .result .expanded ol li:nth-child(15) {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+@-webkit-keyframes fadeInOptions {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  75% {
+    opacity: 0.5;
+    top: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInLegs {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  75% {
+    opacity: 0.5;
+    top: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+#itinerary-menu li.result:nth-child(1) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+#itinerary-menu li.result:nth-child(2) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+#itinerary-menu li.result:nth-child(3) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+#itinerary-menu li.result:nth-child(4) {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+#itinerary-menu li.result:nth-child(5) {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+#itinerary-menu li.result:nth-child(6) {
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+#itinerary-menu li.result:nth-child(7) {
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+#itinerary-menu li.result:nth-child(8) {
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+
+@-webkit-keyframes fadeInOptions {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  75% {
+    opacity: 0.5;
+    top: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+
 .clear-button-formatting {
   color: white;
   width: 100%;
@@ -262,9 +432,6 @@ margin-top:15px;
   border-radius: 10px;
 }
 
-.otp .option.metro-itin.expanded li div:nth-of-type(3){
-display: none;
-}
 
 .itin-duration{color:#000 !important; margin-top:5px;}
 .itin-departures{display:none;}
@@ -285,7 +452,7 @@ html{background-color: #000;}
 .option.metro-itin li span span svg {filter:invert(1)}
 */
 .desktop-narrative-container .false .result .expanded .itin-wrapper {
-  width: 97%;
+  width: 100%;
 }
 
 .otp .options > .list::-webkit-scrollbar {
@@ -479,3 +646,157 @@ span.sustainability-units {
   z-index: 100000;
 }
 
+.legtime{
+  
+}
+
+.otp .option.metro-itin.expanded li:last-of-type .legtime {
+  display:none;
+}
+
+.otp .option.metro-itin.expanded li div:nth-of-type(3) {
+  display: none; 
+  margin-top: 55px;
+  margin-left: -20px;
+  width:70px;
+}
+
+
+
+
+.footer-button-container {
+  position: absolute;
+  z-index: 9999999;
+  bottom: 65px;
+  left: 70px;
+}
+
+.button-back,.button-restart{
+  margin-left:20px;
+  margin-right:20px;
+  float:left;
+}
+
+.button-back a,.button-restart a{
+  outline:none;
+  cursor: pointer;
+}
+.button-back a:hover,.button-restart a:hover{
+  opacity:0.8;
+}
+
+.button-back img,.button-restart img{
+  width:70px;
+  height:70px;
+  box-shadow: 3px 0px 12px #00000052;
+  border-radius: 50%;
+}
+
+.text-footer-button-container{
+  color:white;
+  margin-top:25px;
+  text-align: center;
+  font-family: 'Brown-Light';
+  font-size:11px;
+}
+
+
+
+
+.mapboxgl-ctrl-bottom-left, .maplibregl-ctrl-bottom-left {
+  bottom: 100px;
+  left: 450px;
+  z-index: 999999;
+}
+  
+.mapboxgl-ctrl-group, .maplibregl-ctrl-group {
+  background: transparent;
+  border-radius: 50%;
+}
+
+.mapboxgl-ctrl-group:not(:empty), .maplibregl-ctrl-group:not(:empty) {
+  box-shadow: none;
+}
+
+.mapboxgl-ctrl-group button, .maplibregl-ctrl-group button {
+  background-color: transparent;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: 70px;
+  outline: none;
+  padding: 0;
+  width: 70px;
+  float:left;
+  margin-left:20px;
+  margin-right:20px;
+
+}
+
+.mapboxgl-ctrl-group button+button, .maplibregl-ctrl-group button+button {
+  border-top: none;
+}
+
+.mapboxgl-ctrl button .mapboxgl-ctrl-icon:hover {
+  opacity:0.8;
+}
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-zoom-in .mapboxgl-ctrl-icon, .maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon {
+  background-image: url('public/zoom_in.svg');
+  box-shadow: 3px 0px 12px #00000052;
+  border-radius: 50%;
+}
+
+.maplibregl-ctrl button.maplibregl-ctrl-zoom-in:after{
+  content:'ZOOM IN';
+  display: block;
+  text-align: center;
+  font-family: 'Brown-Light';
+  font-size:11px;
+  color:white;
+  margin-top:25px;
+}
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-zoom-out .mapboxgl-ctrl-icon, .maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon {
+  background-image: url('public/zoom_out.svg');
+  box-shadow: 3px 0px 12px #00000052;
+  border-radius: 50%;
+}
+
+.maplibregl-ctrl button.maplibregl-ctrl-zoom-out:after{
+  content:'ZOOM OUT';
+  display: block;
+  text-align: center;
+  font-family: 'Brown-Light';
+  font-size:11px;
+  color:white;
+  margin-top:25px;
+}
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-compass .mapboxgl-ctrl-icon, .maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon {
+  background-image: url('public/compass.svg');
+  box-shadow: 3px 0px 12px #00000052;
+  border-radius: 50%;
+}
+
+.maplibregl-ctrl button.maplibregl-ctrl-compass:after{
+  content:'TURN NORTH';
+  display: block;
+  text-align: center;
+  font-family: 'Brown-Light';
+  font-size:11px;
+  color:white;
+  margin-top:25px;
+}
+
+
+.suggested{
+    width: 85%;
+    font-size: 18px !important;
+    left: -1px !important;
+}
+.suggested h2, .begin-suggested{
+    font-size: 16px;
+    text-transform: uppercase;
+}
