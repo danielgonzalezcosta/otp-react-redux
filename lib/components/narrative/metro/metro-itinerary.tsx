@@ -146,7 +146,7 @@ class MetroItinerary extends NarrativeItinerary {
 
     Array.from(modes.values()).forEach(leg => {
 
-      if (leg && leg.mode) {
+      if (leg && leg.transitLeg) {
         if (leg.mode === "RAIL" || leg.mode === "SUBWAY") {
           if (!railSubwayExists) {
             railSubwayExists = true;
