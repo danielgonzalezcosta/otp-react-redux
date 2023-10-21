@@ -102,14 +102,14 @@ common:
     "yes": "Yes"
   itineraryDescriptions:
     calories: "{calories, number} Cal"
-    noItineraryToDisplay: No itinerary to display.
-    relativeCo2: |
-      {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
-    transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
     duration: Duration
     modes: Modes of Transport
-    option: "Option {index}"
+    noItineraryToDisplay: No itinerary to display.
+    option: Option {index}
+    relativeCo2: |
+      {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
     sustainability: Sustainability Rank
+    transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
   linkOpensNewWindow: (Opens new window)
   modes:
     bicycle_rent: Bikeshare
@@ -128,6 +128,7 @@ common:
     rail: Rail
     rent: Rental options
     subway: Subway
+    taxi: Taxi
     tram: Streetcar
     transit: Transit
     walk: Walk
