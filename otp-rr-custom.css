@@ -800,3 +800,17 @@ span.sustainability-units {
     font-size: 16px;
     text-transform: uppercase;
 }
+
+
+
+.button-exit{
+  position: absolute;
+  z-index: 9999999;
+  top: 90px;
+  right: 90px;
+}
+
+.button-exit img {
+  width: 70px;
+  height: 70px;
+}
